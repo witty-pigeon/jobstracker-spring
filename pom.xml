@@ -85,6 +85,18 @@
       <artifactId>validation-api</artifactId>
       <version>1.1.0.Final</version>
     </dependency>
+    
+    <!--JSON conversion-->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.6.5</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>2.6.5</version>
+    </dependency>
 
     <!--c3p0-->
     <dependency>
@@ -188,6 +200,32 @@
           <failOnMissingWebXml>false</failOnMissingWebXml>
           <warName>${project.artifactId}</warName>
         </configuration>
+      </plugin>
+      <plugin>
+          <groupId>com.samaxes.maven</groupId>
+          <artifactId>minify-maven-plugin</artifactId>
+          <version>1.7.4</version>
+          <executions>
+            <!-- minify app -->
+            <execution>
+              <id>minify-app</id>
+              <goals><goal>minify</goal></goals>
+              <phase>process-resources</phase>
+              <configuration>
+                <verbose>true</verbose>
+                <charset>UTF-8</charset>
+                
+                <skipMinify>true</skipMinify>
+                
+                <jsSourceDir>WEB-INF/js/</jsSourceDir>
+                <jsSourceIncludes>
+                  <jsSourceInclude>**/*.js</jsSourceInclude>
+                </jsSourceIncludes>
+                <jsTargetDir>resources/js/</jsTargetDir>
+                <jsFinalFile>main.js</jsFinalFile>
+              </configuration>
+            </execution>
+          </executions>
       </plugin>
     </plugins>
   </build>

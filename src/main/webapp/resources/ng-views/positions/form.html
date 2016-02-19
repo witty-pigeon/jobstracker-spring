@@ -1,0 +1,38 @@
+<form name="positionForm">
+  <div class="form-group">
+    <label for="company">Company:</label>
+    <input id="company" name="company" class="form-control" ng-model="position.company"/>
+    <span class="label label-danger">{{positionForm.company.$isValid}}</span>
+  </div>
+  <div class="form-group">
+    <label for="position">Position:</label>
+    <input id="position" name="position" class="form-control" ng-required="true"
+           ng-model="position.position" ng-max-length="255"/>
+    <span class="label label-danger">{{positionForm.position.$isValid}}</span>
+  </div>
+  <div class="form-group">
+    <label for="agency">Agency:</label>
+    <input id="agency" name="agency" class="form-control"
+           ng-model="position.agency" ng-max-legnth="255"/>
+    <span class="label label-danger">{{positionForm.agency.$isValid}}</span>
+  </div>
+  <div class="form-group">
+    <label for="pointOfContact">Point of contact:</label>
+    <input id="pointOfContact" name="pointOfContact" class="form-control" ng-model="position.pointOfContact"/>
+    <span class="label label-danger">{{positionForm.pointOfContact.$isValid}}</span>
+  </div>
+  <div class="form-group">
+    <label for="salaryMin">Salary:</label>
+    <div class="form-inline">
+      <input type="number" id="salaryMin" name="salaryMin" ng-model="position.salaryMin" class="form-control"/>
+      <input type="number" id="salaryMax" name="salaryMax" ng-model="position.salaryMax" class="form-control"/>
+    </div>
+  </div>
+  <div class="form-group">
+    <label id="notes" for="notes">Notes:</label>
+    <textarea id="notes" name="notes" class="form-control" ng-model="position.notes"></textarea>
+  </div>
+  
+  <input type="submit" ng-click="submit()" value="{{submitLabel}}"/>
+  <input type="reset" value="Reset"/>
+</form>

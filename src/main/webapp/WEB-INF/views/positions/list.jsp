@@ -53,5 +53,5 @@
         </tr>
       </c:forEach>
     </tbody>
-  </ul>
+  </table>
 </t:generic>

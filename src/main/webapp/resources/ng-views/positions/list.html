@@ -1,0 +1,39 @@
+<h2>List of Positions</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>Company</th>
+        <th>Agency</th>
+        <th>Point of contact</th>
+        <th>Salary</th>
+        <th>Link</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="position in positions">
+          <td>
+            <a ng-href="{{context  + '#/positions/' + position.id}}">{{position.position}}</a>
+          </td>
+          <td>{{position.company}}</td>
+          <td>{{position.agency}}</td>
+          <td>{{position.pointOfContact}}</td>
+
+          
+          <td ng-switch="salaryCheck(position)">
+            <span ng-switch-when="NONE">Not specified</span>
+            <span ng-switch-when="BOTH">
+              {{position.salaryMin}} € - {{position.salaryMax}} €
+            </span>
+            <span ng-switch-default>{{position.salaryMin}} €</span>
+          </td>
+          <td><a ng-href="{{position.specificationsLink}}"/>Link</a></td>
+          <td>
+            
+              <span ng-if="position.closed" class="label label-danger">Closed</span>
+              <span ng-if="!position.closed" class="label label-success">Open</span>
+          </td>
+        </tr>
+    </tbody>
+  </table>

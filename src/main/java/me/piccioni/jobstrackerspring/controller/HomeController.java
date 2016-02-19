@@ -12,7 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 
 	@RequestMapping(value="/")
-	public ModelAndView test(HttpServletResponse response) throws IOException{
+	public ModelAndView showHome(HttpServletResponse response) throws IOException{
 		return new ModelAndView("home");
+	}
+  
+  @RequestMapping(value="/ng/")
+	public ModelAndView showAngularHome(HttpServletResponse response) throws IOException{
+		return new ModelAndView("home-ng");
 	}
 }
