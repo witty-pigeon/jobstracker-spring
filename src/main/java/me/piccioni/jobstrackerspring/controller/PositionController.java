@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import me.piccioni.jobstrackerspring.model.Position;
 import me.piccioni.jobstrackerspring.service.PositionManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.HttpClientErrorException;
 
 /**
  *
@@ -74,7 +76,8 @@ public class PositionController {
     if(result.hasErrors()) {
       return "positions/edit";
     }
-    if(id != position.getId()) throw new HttpNotFoundException();
+    if(id != position.getId()) throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
+    if( null == positionManager.getPosition(id)) throw new HttpNotFoundException();
     
     positionManager.updatePosition(position);
     
