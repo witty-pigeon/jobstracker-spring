@@ -2,6 +2,7 @@ package me.piccioni.jobstrackerspring.controller;
 
 
 import java.util.List;
+import java.util.logging.Logger;
 import javax.validation.Valid;
 import me.piccioni.jobstrackerspring.model.Position;
 import me.piccioni.jobstrackerspring.service.PositionManager;
@@ -24,15 +25,16 @@ import org.springframework.web.client.HttpClientErrorException;
 @RequestMapping("/api/positions")
 public class PositionControllerJson {
   
+  
   @Autowired
   private PositionManager positionManager;
   
-  @RequestMapping(produces = "application/json")
-  public @ResponseBody List<Position> list() {
+  @RequestMapping(produces = "application/json", method = RequestMethod.GET)
+  public @ResponseBody List<Position> listPositions() {
     return positionManager.listPositions();
   }
   
-  @RequestMapping(value = "/{id}", produces = "application/json")
+  @RequestMapping(value = "/{id}", produces = "application/json", method = RequestMethod.GET)
   public @ResponseBody Position showPosition(@PathVariable long id) {
     return positionManager.getPosition(id);
   }
@@ -45,6 +47,24 @@ public class PositionControllerJson {
     }
     
     positionManager.addPosition(position);
+    return position;
+  }
+  
+  @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+  public @ResponseBody Position updatePosition(@PathVariable long id,
+          @RequestBody @Valid Position position,
+          BindingResult result) {
+    
+    if(result.hasErrors()) {
+      throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
+    }
+    
+    if(id != position.getId()) throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
+    if( null == positionManager.getPosition(id)) throw new HttpNotFoundException();
+    
+    
+    positionManager.updatePosition(position);
+    
     return position;
   }
 }

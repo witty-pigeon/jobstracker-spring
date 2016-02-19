@@ -1,9 +1,13 @@
 angular.module('JobsTrackerSpring')
-        .factory('positionResource', ['$resource', 'contextInfoSvc',
+        .factory('PositionResource', ['$resource', 'contextInfoSvc',
           function ($resource, contextInfoSvc) {
             
             var context = contextInfoSvc.getContext();
             
-            return $resource( context + 'api/positions/');
+            var additionalActions = {
+              update: {method: 'PUT'}
+            };
+            
+            return $resource( context + 'api/positions/:id', {id: '@id'}, additionalActions);
             
           }]);

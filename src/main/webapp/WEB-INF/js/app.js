@@ -19,6 +19,14 @@ angular.module('JobsTrackerSpring',['ui.bootstrap', 'ngRoute', 'ngResource'])
                         templateUrl: '../resources/ng-views/positions/form.html',
                         controller: 'PositionsNewCtrl'
                       })
+                      .when('/positions/:id', {
+                        templateUrl: '../resources/ng-views/positions/show.html',
+                        controller: 'PositionsShowCtrl'
+                      })
+                      .when('/positions/:id/edit', {
+                        templateUrl: '../resources/ng-views/positions/form.html',
+                        controller: 'PositionsEditCtrl'
+                      })
                       .otherwise({redirectTo: '/home'});
             }])
           

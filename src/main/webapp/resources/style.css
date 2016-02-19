@@ -2,3 +2,14 @@ footer{
   text-align: center;
   margin-top: 5rem;
 }
+
+.message-area {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.message-area>.alert {
+  margin-bottom: 1px;
+}

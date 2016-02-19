@@ -1,6 +1,6 @@
 angular.module('JobsTrackerSpring')
-        .controller('PositionsNewCtrl', ['$scope', '$location', 'positionResource',
-          function ($scope, $location, positionResource) {
+        .controller('PositionsNewCtrl', ['$scope', '$location', 'PositionResource',
+          function ($scope, $location, PositionResource) {
             'use strict';
 
             $scope.submitLabel = 'Create';
@@ -8,7 +8,7 @@ angular.module('JobsTrackerSpring')
 
             $scope.submit = function () {
               if ($scope.positionForm.$valid) {
-                positionResource.save($scope.position,
+                PositionResource.save($scope.position,
                         function (data) {
                           $scope.$emit('successMessage', 'Saved');
                           $location.path('/positions/');

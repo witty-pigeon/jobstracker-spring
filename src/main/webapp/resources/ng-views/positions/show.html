@@ -1,0 +1,13 @@
+ <h1>Position details for {{position.position}} </h1>
+  <table class="table table-hover">
+    <tbody>
+      <tr><td>Position:</td><td>{{position.position}}</td></tr>
+      <tr><td>Company:</td><td>{{position.company}}</td></tr>
+      <tr><td>Point of contact:</td><td>{{position.pointOfContact}}</td></tr>
+      <tr><td>Agency:</td><td>{{position.agency}}</td></tr>
+      <tr><td>Notes:</td><td>{{position.notes}}</td></tr>
+      <tr><td>Specs:</td><td>{{position.specificationsLink}}</td></tr>
+    </tbody>
+  </table>
+  <a ng-href="#/positions/"> &lt; Show All</a> |
+  <a ng-href="#/positions/{{position.id}}/edit">Edit</a>

@@ -133,6 +133,12 @@ public class Position implements Serializable{
   public void setNotes(String notes) {
     this.notes = notes;
   }
+
+  @Override
+  public String toString() {
+    return "Position{" + "id=" + id + ", company=" + company + ", position=" + position + ", agency=" + agency + ", salaryMin=" + salaryMin + ", salaryMax=" + salaryMax + ", pointOfContact=" + pointOfContact + ", specificationsLink=" + specificationsLink + ", closed=" + closed + ", notes=" + notes + '}';
+  }
+  
   
   
   
