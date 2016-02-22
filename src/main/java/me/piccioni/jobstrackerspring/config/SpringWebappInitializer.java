@@ -12,6 +12,7 @@ public class SpringWebappInitializer implements WebApplicationInitializer{
   @Override
   public void onStartup(ServletContext servletContext) throws ServletException {
     AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext();
+    applicationContext.getEnvironment().setActiveProfiles("prod");
     applicationContext.setConfigLocations("me.piccioni.jobstrackerspring.config");
     
     ServletRegistration.Dynamic dispatcher = servletContext
