@@ -1,7 +1,9 @@
 # Jobs Tracker (Spring version)
 
 This is a small webapp that allows tracking of positions of interest.
-This app uses Spring 4 and Hibernate 5
+This app uses Spring 4, Hibernate 5 and AngularJS
+
+![Screenshot](../screenshots/jobstracker-spring-screen.png)
 
 ## Requirements
 - Java 8
